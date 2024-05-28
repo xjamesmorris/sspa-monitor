@@ -7,5 +7,4 @@ Initial monitoring covers Vg, Ig, and heatsink temperature. See the code for mor
 
 
 
-- James W7TXT
-
+Copyright (c) 2024, James Morris W7TXT.
