@@ -122,15 +122,15 @@ void oled_update(struct telemetry_data *td) {
     oled.setFont(OLED_DATA_FONT);
 
     oled.setCursor(0, OLED_DATA_LINE_1);
-    snprintf(oled_buf, LINE_MAX, "Vd: %7.2f V", td->v_drain.val);
+    snprintf(oled_buf, LINE_MAX, "Vd: %7.2f", td->v_drain.val);
     oled.print(oled_buf);
 
     oled.setCursor(0, OLED_DATA_LINE_2);
-    snprintf(oled_buf, LINE_MAX, "Id: %7.2f A", td->i_drain.val);
+    snprintf(oled_buf, LINE_MAX, "Id: %7.2f", td->i_drain.val);
     oled.print(oled_buf);
 
     oled.setCursor(0, OLED_DATA_LINE_3);
-    snprintf(oled_buf, LINE_MAX, "Th: %7.2f C", td->t_heatsink.val);
+    snprintf(oled_buf, LINE_MAX, "Th: %7.2f", td->t_heatsink.val);
     oled.print(oled_buf);
 
   } while (oled.nextPage());
