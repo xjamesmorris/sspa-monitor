@@ -1,6 +1,16 @@
 /*
  * sspa-monitor (c) 2024, James Morris W7TXT <jmorris@namei.org>
  *
+ * This version supports measurement of drain current, drain voltage, and heatsink temperature.
+ * I developed it for initial testing of a 30W GAN SSPA for 10 GHz, to set Idq & monitor temperature.
+ *
+ * Todo:
+ *    - Fan control
+ *    - Wireless telemetry
+ *    - Vg & Ig measurement
+ *    - RF power monitoring
+ *
+ *
  * Thermistor support based on ladyada's code, all other code is GPL.
  *
  * My configuration:
@@ -9,11 +19,6 @@
  *    Thermistor:        NRG1104H3950B1H, 10k, +/-3%, 3950 beta, 25/50 type.
  *    Current sensor:    INA169
  *
- * Todo:
- *    - Fan control
- *    - Wireless telemetry
- *    - Vg & Ig measurement
- *    - RF power monitoring
  */
 #include <Wire.h>
 #include <U8g2lib.h>
@@ -21,7 +26,7 @@
 #include <LibPrintf.h>
 #include "sspa-monitor.h"
 
-#define VERSION F("v0.40")
+#define VERSION F("v0.41")
 #define LINE_MAX 12
 #define SPLASH_DELAY 800
 #define LOOP_DELAY 250
@@ -30,7 +35,7 @@
 #define CURRENT_PIN A0
 #define V_RAW_MAX 1023
 
-/* Gate voltage measurement, 0.08V/V on this setup. Todo: replace 100k R w/ 91k */
+/* Drain voltage measurement, 0.08V/V on this setup. Todo: replace 100k R w/ 91k */
 #define V_DRAIN_PIN A2
 #define V_DRAIN_GAIN 12.5 /* 1/0.08 */
 
