@@ -26,7 +26,7 @@
 #include <LibPrintf.h>
 #include "sspa-monitor.h"
 
-#define VERSION F("v0.41")
+#define VERSION F("v0.42")
 #define LINE_MAX 12
 #define SPLASH_DELAY 800
 #define LOOP_DELAY 250
